@@ -1,29 +1,19 @@
 
 class Matrix {
     final int rows, columns;
-    double[] data;
+    int[] data;
 
     Matrix(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        this.data = new double[rows*columns];
-    }
-
-    void setData(double... values) throws Exception {
-        int i = 0;
-
-        for (int value : values)
-            this.data[i++] = value;
-
-        if (i != this.data.length)
-            throw new Exception("Mismatched amount of values passed to Matrix " + this.toString());
+        this.data = new int[rows*columns];
     }
 
     void setData(int... values) throws Exception {
         int i = 0;
 
         for (int value : values)
-            this.data[i++] = (double)value;
+            this.data[i++] = value;
 
         if (i != this.data.length)
             throw new Exception("Mismatched amount of values passed to Matrix " + this.toString());
@@ -50,11 +40,25 @@ class Matrix {
         return m;
     }
 
+    @Override public String toString() {
+        String str = "(";
+
+        for (int row = 0; row<rows; row++) {
+
+            for (int column = 0; column<columns; column++) {
+                str += String.format("%1$3s", this.data[row*rows + column]);
+            }
+            str += " ";
+        }
+
+        return str + ")"
+    }
+
     /**
      * Calculte the Determinant of a Matrix
      * @param m Matrix 
      */
-    public static double det(Matrix m) {
+    public static int det(Matrix m) {
         return 0.0;
     }
 }
