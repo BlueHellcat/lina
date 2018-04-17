@@ -16,7 +16,7 @@ class Matrix {
             this.data[i++] = value;
         
         if (i != this.data.length)
-            throw new Exception("Mismatched amount of values passed to Matrix " + this.toString();
+            throw new Exception("Mismatched amount of values passed to Matrix " + this.toString());
     }
 
     /**
