@@ -33,7 +33,21 @@ class Matrix {
         if (row<0 || row >= this.rows || column<0 || column >= this.columns)
             throw new Exception("Invalid Indices for cropping Matrix");
         
-        Matrix m = new Matrix(this.rows-1, this.columns-1)
+        Matrix m = new Matrix(this.rows-1, this.columns-1);
+
+        int cursor = 0;
+
+        for (int i=0; i<this.rows; i++) {
+            if (i == row)
+                continue;
+            for (int j=0; j<this.columns; j++) {
+                if (j == column)
+                    continue;
+                m.data[cursor++] = this.data[i*this.rows + j];
+            }
+        }
+
+        return m;
     }
 
     /**
