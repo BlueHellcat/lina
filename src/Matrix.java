@@ -12,7 +12,7 @@ class Matrix {
     void setData(int... values) {
         int i = 0;
 
-        for (value : values)
+        for (int value : values)
             this.data[i++] = value;
         
         if (i != this.data.length)
