@@ -6,17 +6,34 @@ class Matrix {
     Matrix(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        this.data = new double[rows*cloumns];
+        this.data = new double[rows*columns];
     }
 
-    void setData(int... values) {
+    void setData(double... values) throws Exception {
         int i = 0;
 
         for (int value : values)
             this.data[i++] = value;
-        
+
         if (i != this.data.length)
             throw new Exception("Mismatched amount of values passed to Matrix " + this.toString());
+    }
+
+    void setData(int... values) throws Exception {
+        int i = 0;
+
+        for (int value : values)
+            this.data[i++] = (double)value;
+
+        if (i != this.data.length)
+            throw new Exception("Mismatched amount of values passed to Matrix " + this.toString());
+    }
+
+    Matrix crop(int row, int column) throws Exception {
+        if (row<0 || row >= this.rows || column<0 || column >= this.columns)
+            throw new Exception("Invalid Indices for cropping Matrix");
+        
+        Matrix m = new Matrix(this.rows-1, this.columns-1)
     }
 
     /**
